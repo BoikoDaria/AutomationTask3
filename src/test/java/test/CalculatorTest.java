@@ -52,4 +52,22 @@ public class CalculatorTest extends FirstTests {
         calculator.click_equal();
         Assert.assertEquals("3", calculator.click_result());
     }
+    @Test
+    public void useDotTest (){
+        calculator.click_3();
+        calculator.click_dot();
+        calculator.click_1();
+        calculator.click_add();
+        calculator.click_5();
+        calculator.click_equal();
+        Assert.assertEquals("8.1", calculator.click_result());
+    }
+    @Test
+    public void useCleanTest (){
+        calculator.click_4();
+        calculator.click_add();
+        calculator.click_5();
+        calculator.click_clean();
+        Assert.assertEquals("", calculator.click_result());
+    }
 }
