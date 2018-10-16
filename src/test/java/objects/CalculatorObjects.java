@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Step;
 
 public class CalculatorObjects {
-    private By button_0 = By.name("0");
     private By button_1 = By.name("1");
     private By button_2 = By.name("2");
     private By button_3 = By.name("3");
@@ -15,6 +14,7 @@ public class CalculatorObjects {
     private By button_7 = By.name("7");
     private By button_8 = By.name("8");
     private By button_9 = By.name("9");
+    private By button_0 = By.name("0");
 
     private By button_add = By.name("+");
     private By button_subst = By.name("-");
@@ -84,5 +84,14 @@ public class CalculatorObjects {
 
     @Step
     public String click_result() { return driver.findElement(result_box).getAttribute("value"); }
+
+    @Step
+    public String calculate(String expression) {
+        for (int i = 0; i < expression.length(); i++) {
+            driver.findElement(By.name(""+ expression.charAt(i)+"")).click();
+        }
+        driver.findElement(button_equal).click();
+        return driver.findElement(result_box).getAttribute("value");
+    }
 }
 
